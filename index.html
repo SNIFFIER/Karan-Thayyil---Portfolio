@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Karan Thayyil - Portfolio</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(255, 255, 255);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.7s forwards;
+        }
+
+        .hero-content .location {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid rgba(1, 1, 1, 0);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            margin: 0 auto;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .language-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #667eea;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.2rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        /* Certifications Section */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .cert-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-card:hover .cert-image img {
+            transform: scale(1.1);
+        }
+
+        .cert-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .cert-placeholder .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .cert-placeholder .upload-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .cert-content {
+            padding: 1.5rem;
+        }
+
+        .cert-content h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .cert-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .cert-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cert-btn {
+            padding: 0.5rem 1rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .cert-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .cert-btn.secondary {
+            background: transparent;
+            color: #667eea;
+            border: 1px solid #667eea;
+        }
+
+        .cert-btn.secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Modal for certificate viewing */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .modal-header h3 {
+            color: #667eea;
+            margin: 0;
+        }
+
+        .close {
+            color: #999;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #667eea;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .upload-area:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 0.5rem auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<nav class="container">
+<a class="logo" href="#">Karan Thayyil</a>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#resume">Resume</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>Hi, I'm Karan Thayyil</h1>
+<p class="subtitle">BCA Graduate | Specialized in IoT & AI, and Database Management | Skilled in Data Visualization with Power BI</p>
+<p class="location">📍 Bengaluru,Kerala India</p>
+<a class="cta-button" href="#about">Learn More</a>
+<a class="cta-button" href="#contact">Get In Touch</a>
+</div>
+</section>
+<section class="section" id="about">
+<div class="container">
+<h2>About Me</h2>
+<div class="about-content">
+<div class="profile-image">    <img src="PIC.jpeg" style="width:300%;height:230%;object-fit:cover;"/></div>
+                
+<div class="about-text">
+<p>I'm a motivated and detail-oriented BCA graduate with a strong foundation in programming, software development, and database management. With hands-on experience in Python, Java, HTML/CSS, and SQL, I specialize in developing interactive web and desktop applications.</p>
+<p>I'm certified in creating AI-powered dashboards using Microsoft Power BI and have completed the KPMG IoT Program with practical exposure to Internet of Things applications. As a fast learner with excellent problem-solving and teamwork skills, I'm eager to contribute to innovative tech environments.</p>
+<p>When I'm not coding, you'll find me editing videos, participating in hackathons, or contributing to open-source projects on GitHub. I believe in continuous learning and staying up-to-date with the latest technology trends.</p>
+</div>
+</div>
+<h3 style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: #667eea;">Languages I Speak</h3>
+<div class="languages-grid">
+<div class="language-item">
+<strong>English</strong><br/>Fluent
+                </div>
+<div class="language-item">
+<strong>Malayalam</strong><br/>Native
+                </div>
+<div class="language-item">
+<strong>Hindi</strong><br/>Proficient
+                </div>
+<div class="language-item">
+<strong>French</strong><br/>B1 Intermediate
+                </div>
+<div class="language-item">
+<strong>Tamil</strong><br/>A2 Elementary
+                </div>
+<div class="language-item">
+<strong>Kannada</strong><br/>A1 Beginner
+                </div>
+</div>
+</div>
+</section>
+<section class="section" id="skills">
+<div class="container">
+<h2>Technical Skills</h2>
+<div class="skills-grid">
+<div class="skill-card">
+<h3>Programming Languages</h3>
+<p>Strong foundation in multiple programming languages</p>
+<div class="skill-tags">
+<span class="skill-tag">Java</span>
+<span class="skill-tag">Python</span>
+<span class="skill-tag">C++</span>
+<span class="skill-tag">JavaScript</span>
+</div>
+</div>
+<div class="skill-card">
+<h3>Web Technologies</h3>
+<p>Frontend development and web design</p>
+<div class="skill-tags">
+<span class="skill-tag">HTML</span>
+<span class="skill-tag">CSS</span>
+<span class="skill-tag">JavaScript</span>
+</div>
+</div>
+<div class="skill-card">
+<h3>Database &amp; Tools</h3>
+<p>Database management and development tools</p>
+<div class="skill-tags">
+<span class="skill-tag">MySQL</span>
+<span class="skill-tag">Git</span>
+<span class="skill-tag">VS Code</span>
+<span class="skill-tag">Eclipse</span>
+</div>
+</div>
+<div class="skill-card">
+<h3>Core Concepts</h3>
+<p>Fundamental computer science concepts</p>
+<div class="skill-tags">
+<span class="skill-tag">Data Structures</span>
+<span class="skill-tag">Algorithms</span>
+<span class="skill-tag">OOP</span>
+<span class="skill-tag">DBMS</span>
+</div>
+</div>
+<div class="skill-card">
+<h3>AI &amp; Analytics</h3>
+<p>Data analysis and AI-powered solutions</p>
+<div class="skill-tags">
+<span class="skill-tag">Power BI</span>
+<span class="skill-tag">AI Tools</span>
+<span class="skill-tag">ChatGPT</span>
+<span class="skill-tag">Data Analysis</span>
+</div>
+</div>
+<div class="skill-card">
+<h3>Creative Skills</h3>
+<p>Content creation and multimedia</p>
+<div class="skill-tags">
+<span class="skill-tag">Video Editing</span>
+<span class="skill-tag">WordPress</span>
+<span class="skill-tag">Creative Thinking</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="projects">
+<div class="container">
+<h2>Featured Projects</h2>
+<div class="projects-grid">
+<div class="project-card">
+<div class="project-image">🎥</div>
+<div class="project-content">
+<h3>Online Motion Detection</h3>
+<p>Developed a secure web platform for online motion detection with integrated database for managing motion records and real-time motion data processing.</p>
+<div class="tech-stack">
+<span class="tech-tag">HTML</span>
+<span class="tech-tag">JavaScript</span>
+<span class="tech-tag">CSS</span>
+</div>
+<div class="project-links">
+<a class="project-link" href="https://github.com/SNIFFIER/CAMALARM">GitHub</a>
+</div>
+</div>
+</div>
+<div class="project-card">
+<div class="project-image">🤟</div>
+<div class="project-content">
+<h3>Sign Language Interpreter</h3>
+<p>Real-time sign language recognition and interpretation system that translates sign language gestures into text and speech for seamless communication.</p>
+<div class="tech-stack">
+<span class="tech-tag">Python</span>
+<span class="tech-tag">TKinter</span>
+<span class="tech-tag">NumPy</span>
+<span class="tech-tag">scikit-learn</span>
+</div>
+<div class="project-links">
+<a class="project-link" href="https://github.com/SNIFFIER/SIGN-LANGUAGE-INTERPRETER">GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="certifications">
+<div class="container">
+<h2>Certifications &amp; Achievements</h2>
+<div class="cert-grid">
+<div class="cert-card" onclick="openCertModal('powerbi')">
+<div class="cert-image" id="powerbi-image"><img alt="Certificate 1" src="cert1.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="cert-content">
+<h4>Power BI Certification</h4>
+<p>Office Master - AI-powered dashboard creation and data visualization</p>
+<div class="cert-actions">
+
+<a class="cert-btn secondary" href="cert1.jpg" onclick="openCertModal('powerbi')">View</a>
+</div>
+</div>
+
+</div>
+<div class="cert-card" onclick="openCertModal('aitools')">
+<div class="cert-image" id="aitools-image"><img alt="Certificate 2" src="cert2.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="cert-content">
+<h4>AI Tools and Chat GPT</h4>
+<p>be10x - Advanced AI tools mastery and ChatGPT optimization</p>
+<div class="cert-actions">
+
+<a class="cert-btn secondary" href="cert2.jpg" onclick="openCertModal('aitools')">View</a>
+</div>
+</div>
+
+</div>
+<div class="cert-card" onclick="openCertModal('wordpress')">
+<div class="cert-image" id="wordpress-image"><img alt="Certificate 3" src="cert3.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="cert-content">
+<h4>Website with WordPress</h4>
+<p>Coursera - Professional web development with WordPress CMS</p>
+<div class="cert-actions">
+
+<a class="cert-btn secondary" href="cert3.jpg" onclick="openCertModal('wordpress')">View</a>
+</div>
+</div>
+
+</div>
+<div class="cert-card" onclick="openCertModal('iot')">
+<div class="cert-image" id="iot-image"><img alt="Certificate 4" src="cert4.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="cert-content">
+<h4>IoT Program</h4>
+<p>KPMG - Internet of Things applications and implementations</p>
+<div class="cert-actions">
+
+<a class="cert-btn secondary" href="cert4.jpg" onclick="openCertModal('iot')">View</a>
+</div>
+</div>
+
+</div>
+<div class="cert-card" onclick="openCertModal('drums1')">
+<div class="cert-image" id="drums1-image"><img alt="Certificate 5" src="cert5.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="cert-content">
+<h4>Trinity College London</h4>
+<p>Grade 1 Drum Kit with Distinction - Music Performance</p>
+<div class="cert-actions">
+
+<a class="cert-btn secondary" href="cert5.jpeg" onclick="openCertModal('drums1')">View</a>
+</div>
+</div>
+
+</div>
+<div class="cert-card" onclick="openCertModal('drums2')">
+<div class="cert-image" id="drums2-image"><img alt="Certificate 6" src="cert6.jpeg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="cert-content">
+<h4>Trinity College London</h4>
+<p>Grade 2 Drum Kit with Merit - Advanced Music Performance</p>
+<div class="cert-actions">
+
+<a class="cert-btn secondary" href="cert6.jpeg" onclick="openCertModal('drums2')">View</a>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="resume">
+<div class="container">
+<h2>Resume</h2>
+<div style="text-align:center;">
+<p>You can view or download my latest resume below.</p>
+<a class="cert-btn" href="KARAN THAYYIL RESUME.pdf" target="_blank">View Resume</a>
+<a class="cert-btn secondary" download="" href="KARAN THAYYIL RESUME.pdf">Download Resume</a>
+</div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="container">
+<h2>Get In Touch</h2>
+<div class="contact-content">
+<p>I'm always open to discussing new opportunities, creative projects, or just having a chat about technology and innovation. Available for immediate opportunities!</p>
+<div class="contact-info">
+<div class="contact-item">
+<div style="font-size: 2rem; margin-bottom: 1rem;">📞</div>
+<h4>Phone</h4>
+<p>+91-9645966343</p>
+</div>
+<div class="contact-item">
+<div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
+<h4>Email</h4>
+<p>karan03thayyil@gmail.com</p>
+</div>
+<div class="contact-item">
+<div style="font-size: 2rem; margin-bottom: 1rem;">🔗</div>
+<h4>GitHub</h4>
+<a href="https://github.com/SNIFFIER">GitHub</a>
+</div>
+<div class="contact-item">
+    <div style="font-size: 2rem; margin-bottom: 1rem;">🔗</div>
+    <h4>LinkedIn</h4>
+    <a href="https://linkedin.com/in/karanthayyil">LinkedIn</a>
+    </div>
+</div>
+<form class="contact-form">
+<div class="form-group">
+<label for="name">Name</label>
+<input id="name" name="name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="email">Email</label>
+<input id="email" name="email" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="message">Message</label>
+<textarea id="message" name="message" required="" rows="5"></textarea>
+</div>
+<button class="submit-btn" type="submit">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">
+<div class="social-links">
+<a href="https://linkedin.com/in/karanthayyil">LinkedIn</a>
+<a href="https://github.com/SNIFFIER">GitHub</a>
+<a href="mailto:karan03thayyil@gmail.com">Email</a>
+<a href="tel:+919645966343">Phone</a>
+</div>
+<p>© 2025 Karan Thayyil. All rights reserved.</p>
+</div>
+</footer>
+<!-- Certificate Modal -->
+
+<script>
+        // Certificate storage
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.querySelectorAll('a, .logo').forEach(link => {
+                    link.style.color = '#333';
+                });
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+                header.querySelectorAll('a, .logo').forEach(link => {
+                    link.style.color = 'white';
+                });
+            }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thanks for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+
+        // Certificate functions
+
+                // Show success message
+                showNotification('Certificate uploaded successfully!');
+            };
+
+            if (file.type.startsWith('image/')) {
+                reader.readAsDataURL(file);
+            } else {
+                reader.readAsDataURL(file);
+            }
+        }
+
+            } else {
+                modalImage.style.display = 'none';
+                uploadPrompt.style.display = 'block';
+            }
+
+            modal.style.display = 'block';
+        }
+
+
+        function showNotification(message) {
+            // Create a simple notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('certModal');
+            if (event.target === modal) {
+        }
+
+        // Animate skill cards on scroll
+        const observerOptions = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe skill cards and project cards
+        document.querySelectorAll('.skill-card, .project-card, .cert-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
